@@ -1,18 +1,18 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[ ]:
+# In[32]:
 
 
 import numpy as np
 import pandas as pd
-import sklearn
+from sklearn.preprocessing import StandardScaler,LabelEncoder,OneHotEncoder
 import pickle
 import tensorflow as tf
 from tensorflow.keras.models import load_model
 
 
-# In[18]:
+# In[33]:
 
 
 ## load the trained model,scaler pickle onehot
@@ -26,7 +26,7 @@ with open('scaler.pkl','rb') as file:
     scaler=pickle.load(file)
 
 
-# In[19]:
+# In[34]:
 
 
 ## Stremlit App
@@ -45,7 +45,7 @@ has_cr_card=st.selectbox('Has Credit Card',[0,1])
 is_active_member=st.selectbox('Is Active Member',[0,1])
 
 
-# In[20]:
+# In[35]:
 
 
 #Input
@@ -62,62 +62,62 @@ input_data=pd.DataFrame({
 })
 
 
-# In[21]:
+# In[36]:
 
 
 geo_encoded = label_encoder_geo.transform(np.array([[geography]]))
 
 
-# In[22]:
+# In[37]:
 
 
 geo_encoded_df=pd.DataFrame(geo_encoded,
 columns=label_encoder_geo.get_feature_names_out(['Geography']))
 
 
-# In[23]:
+# In[38]:
 
 
 input_data=pd.concat([input_data.reset_index(drop=True),geo_encoded_df],axis=1)
 
 
-# In[24]:
+# In[39]:
 
 
 input_data
 
 
-# In[25]:
+# In[40]:
 
 
 input_data_scaled=scaler.transform(input_data)
 
 
-# In[26]:
+# In[41]:
 
 
 input_data_scaled
 
 
-# In[27]:
+# In[42]:
 
 
 prediction=model.predict(input_data_scaled)
 
 
-# In[28]:
+# In[43]:
 
 
 prediction_proba=prediction[0][0]
 
 
-# In[29]:
+# In[44]:
 
 
 prediction_proba
 
 
-# In[30]:
+# In[45]:
 
 
 if prediction_proba>0.5:

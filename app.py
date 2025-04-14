@@ -1,6 +1,17 @@
 #!/usr/bin/env python
 # coding: utf-8
 
+# In[ ]:
+
+
+import numpy as np
+import pandas as pd
+import sklearn
+import pickle
+import tensorflow as tf
+from tensorflow.keras.models import load_model
+
+
 # In[18]:
 
 

@@ -1,25 +1,6 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[1]:
-
-
-get_ipython().system('pip install streamlit')
-
-
-# In[17]:
-
-
-import numpy as np
-import streamlit as st
-import tensorflow as tf
-from sklearn.preprocessing import StandardScaler,LabelEncoder,OneHotEncoder
-import pandas as pd
-import pickle
-%%writefile app.py
-import streamlit as st
-
-
 # In[18]:
 
 
